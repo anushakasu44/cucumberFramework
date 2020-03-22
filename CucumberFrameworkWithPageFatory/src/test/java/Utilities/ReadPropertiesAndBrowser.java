@@ -15,7 +15,7 @@ public class ReadPropertiesAndBrowser {
 	public ReadPropertiesAndBrowser() throws Exception{
 		try{
 			readprop=new Properties();
-	    FileInputStream fis=new FileInputStream("C:\\Users\\anush\\eclipse-workspace\\CucumberFrameworkWithPageFatory\\target\\config.properties");
+	    FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"\\resourses\\config.properties");
 		readprop.load(fis);
 		}
 		catch(EXCEPTION e) {
@@ -24,17 +24,17 @@ public class ReadPropertiesAndBrowser {
 		
 	}
 	
-	public ChromeDriver openBrowser(String name,String url) {
+	public ChromeDriver openBrowser() {
 		
 		ChromeDriver driver = null;
-		if(readprop.getProperty(name).equals("Chrome")) {
+		if(readprop.getProperty("name").equals("Chrome")) {
 			
-			System.setProperty("webdriver.chrome.driver","D:\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\resourses\\chromedriver.exe");
 	        driver=new ChromeDriver();
 	    
 		
 		}
-		driver.get(readprop.getProperty(url));
+		driver.get(readprop.getProperty("url"));
 	    driver.manage().window().maximize();
 	    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	    return driver;

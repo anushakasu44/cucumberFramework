@@ -6,11 +6,11 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="C:\\Users\\anush\\eclipse-workspace\\CucumberFrameworkWithPageFatory\\Features",
-glue="com.cucumberFramework_StepDefinations",
-tags="@smoke",
+@CucumberOptions(features="Features",
+glue="com.cucumberFrameworkStepDefinations",
+tags="@CS",
 
-monochrome=true,
+//monochrome=true,
 plugin= {"pretty","html:target/myreport"})
 
 

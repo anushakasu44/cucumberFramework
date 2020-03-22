@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.io.FileHandler;
@@ -14,20 +15,20 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class LoginPage {
-	ChromeDriver driver;
+	WebDriver driver;
 
-	@FindBy(xpath="//input[@name='txtUsername']")
+	@FindBy(xpath="//*[@id='mat-input-0']")
 	WebElement username;
 	
-	@FindBy(xpath="//input[@name='txtPassword']")
+	@FindBy(xpath="//*[@id='mat-input-1']")
 	WebElement password;
 	
-	@FindBy(xpath="//input[@type='submit']")
-	WebElement submit;
+	@FindBy(xpath="//button[text()='Login']")
+	WebElement login;
 	
-	public LoginPage(ChromeDriver driver) {
-		this.driver=driver;
-		PageFactory.initElements(driver, this);
+	public LoginPage(WebDriver driver2) {
+		this.driver=driver2;
+		PageFactory.initElements(driver2, this);
 		
 	}
 	
@@ -38,7 +39,7 @@ public class LoginPage {
 		password.sendKeys(value);
 	}
 		public void clickonsubmit() {
-		submit.click();
+			login.click();
 	}
 		public void takeScreenshot(String filename) throws Exception {
 			File file=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
